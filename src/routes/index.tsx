@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 import NotFoundRoute from "../shared/NotFoundRoute";
+import Hero from "../shared/Hero";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <></>,
+        element: (
+          <>
+            <Hero />
+          </>
+        ),
       },
     ],
   },
