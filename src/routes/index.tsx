@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 import NotFoundRoute from "../shared/NotFoundRoute";
 import Hero from "../shared/Hero";
+import CustomerTestimonials from "../shared/CustomerTestimonials";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Hero />
+            <CustomerTestimonials />
           </>
         ),
       },

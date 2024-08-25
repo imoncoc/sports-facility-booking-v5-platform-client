@@ -21,10 +21,6 @@ const Navbar = () => {
     }
   }, [theme]);
 
-  const handleThemeSwitch = () => {
-    setTheme(!theme);
-  };
-
   const handleChange = (value: string) => {
     if (value === "Dark") {
       setTheme(true);
