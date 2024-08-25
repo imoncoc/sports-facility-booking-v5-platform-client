@@ -3,6 +3,7 @@ import MainLayout from "../components/layout/MainLayout";
 import NotFoundRoute from "../shared/NotFoundRoute";
 import Hero from "../shared/Hero";
 import CustomerTestimonials from "../shared/CustomerTestimonials";
+import WhoCanUse from "../shared/WhoCanUse";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Hero />
+            <WhoCanUse />
             <CustomerTestimonials />
           </>
         ),

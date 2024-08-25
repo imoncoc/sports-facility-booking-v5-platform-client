@@ -1,4 +1,4 @@
-import { Avatar } from "antd";
+import { Avatar, Image } from "antd";
 import { testimonialData } from "./fakeData";
 
 const CustomerTestimonials = () => {
@@ -16,8 +16,8 @@ const CustomerTestimonials = () => {
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-x-8 gap-y-12">
-              {testimonialData?.slice(0, 4)?.map((item) => (
-                <figure className="">
+              {testimonialData?.slice(0, 4)?.map((item, indx) => (
+                <figure key={indx} className="">
                   <Avatar size={64} src={item?.photo} />
                   <blockquote className="text-lg mt-2 mb-6 leading-6 text-third-color dark:text-slate-500">
                     {item?.comment}
@@ -29,13 +29,23 @@ const CustomerTestimonials = () => {
           </div>
         </div>
         <div className="w-full md:w-[50%]">
-          <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-4 p-4 md:gap-6 md:p-6 overflow-hidden">
+          <div className="grid grid-cols-3 md:grid-cols-2 xl:grid-cols-3 gap-4 p-4 md:gap-6 md:p-6 overflow-hidden">
             {testimonialData?.slice(0, 12)?.map((item, index) => (
               <div key={index} className="block w-full  overflow-hidden">
-                <img
+                {/* <img
                   className="w-full h-24 md:h-40 transition-all ease-in-out duration-500  hover:scale-110"
                   src={item?.thumbnail}
                   alt=""
+                /> */}
+                <Image
+                  className="w-full h-24 md:h-40 transition-all ease-in-out duration-500  hover:scale-110"
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    transition: "all 0.5s ease-in-out",
+                    transform: "scale(1.1)",
+                  }}
+                  src={item?.thumbnail}
                 />
               </div>
             ))}

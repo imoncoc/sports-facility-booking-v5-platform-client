@@ -33,3 +33,11 @@
 .custom-button {
     @apply p-4 px-8 text-center bg-white rounded-full shadow-lg duration-200 cursor-pointer hover:opacity-80 text-darkViolet;
 }
+
+.heading-title {
+    @apply text-3xl md:text-4xl text-center font-semibold text-lightBlue dark:text-strongCyan
+}
+
+.heading-p {
+    @apply text-sm md:text-base text-center text-darkGrayishBlue dark:text-grayishBlue my-2
+}
