@@ -95,13 +95,13 @@ const Navbar = () => {
               >
                 Booking
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="#"
                 className="text-grayishViolet hover:text-strongCyan"
                 onClick={handleThemeSwitch}
               >
                 DarkMode
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
 
