@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
 import { Select, Tooltip } from "antd";
+import runningIcon from "../../src/assets/running.png";
 
 const Navbar = () => {
   const [menuButton, setMenuButton] = useState(false);
@@ -60,7 +61,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-20">
             {/* <!-- Logo --> */}
-            {/* <img src="./images/logo.svg" alt=""> */}
+            <div className="flex justify-center items-center gap-2">
+              <img className="size-8" src={runningIcon} alt="" />
+              <p className="text-xl font-bold uppercase text-third-color dark:text-fourth-color">
+                {" "}
+                <span className="text-secondary-color">S</span>
+                <span className="text-primary-color">F</span> Platform
+              </p>
+            </div>
             {/* <!-- Left Menu --> */}
             <div className="hidden text-lg uppercase space-x-8 font-bold lg:flex">
               <NavLink
@@ -98,12 +106,11 @@ const Navbar = () => {
           </div>
 
           {/* <!-- Right Buttons Menu --> */}
-          <div className="hidden items-center space-x-6 font-bold text-grayishViolet lg:flex">
-            <div className="hover:text-varyDarkViolet">Login</div>
-            <a
-              href="#"
-              className="px-8 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70"
-            >
+          <div className="hidden items-center space-x-4 font-bold text-grayishViolet lg:flex">
+            <div className="hover:text-varyDarkViolet custom-muted-button">
+              Login
+            </div>
+            <a href="#" className="custom-primary-button">
               Sign Up
             </a>
             <div className="">
@@ -163,22 +170,16 @@ const Navbar = () => {
             <NavLink to="/booking" className="w-full text-center uppercase">
               Booking
             </NavLink>
-            <a
-              href="#"
-              className="w-full text-center pt-6 border-t border-gray-400"
-            >
+            <a href="#" className="custom-button w-full">
               Login
             </a>
-            <a
-              href="#"
-              className="w-full text-center py-3 rounded-full bg-cyan"
-            >
+            <a href="#" className="custom-primary-button w-full">
               Sign Up
             </a>
 
             <Select
               className="w-full"
-              defaultValue="lucy"
+              defaultValue="Switch Color Mode "
               style={{ width: "100%" }}
               onChange={handleChange}
               options={options}
