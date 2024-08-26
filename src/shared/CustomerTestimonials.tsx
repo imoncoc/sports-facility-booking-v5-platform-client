@@ -41,13 +41,13 @@ const CustomerTestimonials = () => {
                 </figure>
               ))}
             </div> */}
-            <div className="bg-darkViolet h-[300px] w-[600px] p-8  rounded-md">
+            <div className="bg-darkViolet h-full lg:h-[300px] w-[456px] sm:w-[612px] md:w-[400px] lg:w-[520px]  xl:w-[600px] p-8  rounded-md">
               <Carousel autoplay arrows dotPosition="bottom">
-                {testimonialData?.slice(0, 4)?.map((item, indx) => (
+                {testimonialData?.map((item, indx) => (
                   <figure
                     key={indx}
-                    style={{ lineHeight: "300px" }}
-                    className="px-12 h-[256px]"
+                    style={{ lineHeight: "100px" }}
+                    className="px-12 py-4 h-full lg:h-[256px]"
                   >
                     <Avatar size={64} src={item?.photo} />
                     <blockquote className="text-lg   text-white ">

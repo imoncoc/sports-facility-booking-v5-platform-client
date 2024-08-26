@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
-import { Select, Tooltip } from "antd";
+import { Avatar, Select, Tooltip } from "antd";
 import runningIcon from "../../src/assets/running.png";
 
 const Navbar = () => {
@@ -103,28 +103,43 @@ const Navbar = () => {
 
           {/* <!-- Right Buttons Menu --> */}
           <div className="hidden items-center space-x-4 font-bold text-grayishViolet lg:flex">
-            <div className="hover:text-varyDarkViolet custom-muted-button">
-              Login
-            </div>
-            <a href="#" className="custom-primary-button">
+            <NavLink to={"/login"}>
+              <div className="hover:text-varyDarkViolet custom-muted-button">
+                Login
+              </div>
+            </NavLink>
+            <NavLink to={"/register"} className="custom-primary-button">
               Sign Up
-            </a>
+            </NavLink>
             <div className="">
               {theme ? (
                 <Tooltip placement="top" title={"Light"}>
                   <SunOutlined
-                    className="text-slate-500 bg-white text-2xl p-2 cursor-pointer rounded-full shadow-md"
+                    className="text-slate-500 bg-white text-3xl p-2 cursor-pointer rounded-full shadow-md"
                     onClick={() => setTheme(false)}
                   />
                 </Tooltip>
               ) : (
                 <Tooltip placement="top" title={"Dark"}>
                   <MoonOutlined
-                    className="text-slate-200 bg-slate-800 text-2xl p-2 rounded-full cursor-pointer shadow-md"
+                    className="text-slate-200 bg-slate-800 text-3xl p-2 rounded-full cursor-pointer shadow-md"
                     onClick={() => setTheme(true)}
                   />
                 </Tooltip>
               )}
+            </div>
+
+            <div>
+              <Avatar
+                style={{
+                  backgroundColor: "hsl(233, 100%, 69%)",
+                  verticalAlign: "middle",
+                }}
+                size={48}
+                gap={4}
+              >
+                {"U"}
+              </Avatar>
             </div>
           </div>
 

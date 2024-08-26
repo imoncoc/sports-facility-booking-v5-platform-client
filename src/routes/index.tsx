@@ -4,6 +4,8 @@ import NotFoundRoute from "../shared/NotFoundRoute";
 import Hero from "../shared/Hero";
 import CustomerTestimonials from "../shared/CustomerTestimonials";
 import WhoCanUse from "../shared/WhoCanUse";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "*",
