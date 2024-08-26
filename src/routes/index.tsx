@@ -6,6 +6,8 @@ import CustomerTestimonials from "../shared/CustomerTestimonials";
 import WhoCanUse from "../shared/WhoCanUse";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Dashboard from "../pages/dashboard/Dashboard";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",

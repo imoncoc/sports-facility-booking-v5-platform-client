@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
 import { Avatar, Select, Tooltip } from "antd";
 import runningIcon from "../../src/assets/running.png";
+import { selectCurrentUser } from "../redux/features/userSlice";
+import { useAppSelector } from "../redux/hooks";
 
 const Navbar = () => {
   const [menuButton, setMenuButton] = useState(false);
   const [theme, setTheme] = useState(false);
-
-  console.log({ theme });
+  const { user } = useAppSelector(selectCurrentUser);
 
   useEffect(() => {
     if (theme) {
@@ -129,18 +130,20 @@ const Navbar = () => {
               )}
             </div>
 
-            <div>
-              <Avatar
-                style={{
-                  backgroundColor: "hsl(233, 100%, 69%)",
-                  verticalAlign: "middle",
-                }}
-                size={48}
-                gap={4}
-              >
-                {"U"}
-              </Avatar>
-            </div>
+            {user && user?.role && (
+              <div>
+                <Avatar
+                  style={{
+                    backgroundColor: "hsl(233, 100%, 69%)",
+                    verticalAlign: "middle",
+                  }}
+                  size={48}
+                  gap={4}
+                >
+                  {user?.name[0]}
+                </Avatar>
+              </div>
+            )}
           </div>
 
           {/* <!--  Hamburger Menu --> */}

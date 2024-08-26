@@ -2,11 +2,25 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAppDispatch } from "../redux/hooks";
+import { useLoginMutation } from "../redux/api/auth/authApi";
+import { setToken, setUser } from "../redux/features/userSlice";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const onFinish = (values: any) => {
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
+
+  const onFinish = async (values: any) => {
     console.log("Received values of form: ", values);
+    const loginInfo = values;
+
+    const res = await login(loginInfo);
+
+    console.log({ res });
+
+    dispatch(setUser(res.data.data));
+    dispatch(setToken(res.data.token));
   };
 
   return (
@@ -22,14 +36,10 @@ const Login = () => {
           Please Log In
         </div>
         <Form.Item
-          name="username"
-          rules={[{ required: true, message: "Please input your Username!" }]}
+          name="email"
+          rules={[{ required: true, message: "Please input your Email!" }]}
         >
-          <Input
-            prefix={<UserOutlined />}
-            size="large"
-            placeholder="Username"
-          />
+          <Input prefix={<UserOutlined />} size="large" placeholder="Email" />
         </Form.Item>
         <Form.Item
           name="password"
