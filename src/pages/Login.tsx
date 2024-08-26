@@ -1,7 +1,7 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, replace, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { useLoginMutation } from "../redux/api/auth/authApi";
 import { setToken, setUser } from "../redux/features/userSlice";
@@ -10,6 +10,7 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
     console.log("Received values of form: ", values);
@@ -18,9 +19,13 @@ const Login = () => {
     const res = await login(loginInfo);
 
     console.log({ res });
+    console.log(res?.data?.success);
 
     dispatch(setUser(res.data.data));
     dispatch(setToken(res.data.token));
+    if (res?.data?.success) {
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -39,7 +44,12 @@ const Login = () => {
           name="email"
           rules={[{ required: true, message: "Please input your Email!" }]}
         >
-          <Input prefix={<UserOutlined />} size="large" placeholder="Email" />
+          <Input
+            defaultValue="web@programming-hero.com"
+            prefix={<UserOutlined />}
+            size="large"
+            placeholder="Email"
+          />
         </Form.Item>
         <Form.Item
           name="password"
@@ -49,6 +59,7 @@ const Login = () => {
             prefix={<LockOutlined />}
             type="password"
             size="large"
+            defaultValue="programming-hero"
             placeholder="Password"
             visibilityToggle={{
               visible: passwordVisible,

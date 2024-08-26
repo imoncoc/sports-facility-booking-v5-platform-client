@@ -5,17 +5,29 @@ import {
 } from "../../redux/features/userSlice";
 import { useAppSelector } from "../../redux/hooks";
 import { Navigate } from "react-router-dom";
+import { verifyToken } from "../../utils/verifyToken";
 
-const ProtectedRoute = ({ children }) => {
-  const { user } = useAppSelector(selectCurrentUser);
+const ProtectedRoute = ({ children, role }) => {
   const { token } = useAppSelector(useCurrentToken);
+  const { user } = useAppSelector(selectCurrentUser);
   console.log({ token });
+  let userData;
   const [isAuth, setIsAuth] = useState(true);
+  if (token) {
+    userData = verifyToken(token);
+  }
 
-  console.log({ isAuth });
+  console.log({ userData });
 
-  if (!isAuth) {
-    return <Navigate to={"/dashboard"} />;
+  if (!userData) {
+    return <Navigate to="/login" replace />;
+  }
+
+  console.log("role: ", role);
+  console.log("userData role: ", userData.role);
+
+  if (role && userData?.role !== user?.role) {
+    return <Navigate to="/login" replace />;
   }
 
   return children;
