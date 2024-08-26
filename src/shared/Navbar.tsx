@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
-import { MoonOutlined, SunOutlined } from "@ant-design/icons";
-import { Avatar, Select, Tooltip } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
+import {
+  LogoutOutlined,
+  MoonOutlined,
+  SunOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Avatar, Button, Dropdown, MenuProps, Select, Tooltip } from "antd";
 import runningIcon from "../../src/assets/running.png";
-import { selectCurrentUser } from "../redux/features/userSlice";
-import { useAppSelector } from "../redux/hooks";
+import { logout, selectCurrentUser } from "../redux/features/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 const Navbar = () => {
   const [menuButton, setMenuButton] = useState(false);
   const [theme, setTheme] = useState(false);
   const { user } = useAppSelector(selectCurrentUser);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (theme) {
@@ -31,6 +38,10 @@ const Navbar = () => {
     console.log(`selected ${value}`);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   const options = [
     {
       value: "Light",
@@ -48,6 +59,33 @@ const Navbar = () => {
           <MoonOutlined className="text-slate-500 bg-white  " />{" "}
           <span className="me-2">Dark Mode</span>
         </span>
+      ),
+    },
+  ];
+
+  const items: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <div
+          className="flex justify-between px-4 py-2 gap-4 rounded-lg transition-all duration-300  hover:text-lightBlue"
+          onClick={() => navigate("/dashboard")}
+        >
+          <UserOutlined />
+          <p>My Profile</p>
+        </div>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <div
+          className="flex justify-between px-4 py-2 gap-4 rounded-lg transition-all duration-300  hover:text-rose-500"
+          onClick={handleLogout}
+        >
+          <LogoutOutlined className=" hover:text-white" />
+          <p>Logout</p>
+        </div>
       ),
     },
   ];
@@ -104,14 +142,19 @@ const Navbar = () => {
 
           {/* <!-- Right Buttons Menu --> */}
           <div className="hidden items-center space-x-4 font-bold text-grayishViolet lg:flex">
-            <NavLink to={"/login"}>
-              <div className="hover:text-varyDarkViolet custom-muted-button">
-                Login
+            {!user && !user?.role && (
+              <div className="flex gap-4">
+                <NavLink to={"/login"}>
+                  <div className="hover:text-varyDarkViolet custom-muted-button">
+                    Login
+                  </div>
+                </NavLink>
+                <NavLink to={"/register"} className="custom-primary-button">
+                  Sign Up
+                </NavLink>
               </div>
-            </NavLink>
-            <NavLink to={"/register"} className="custom-primary-button">
-              Sign Up
-            </NavLink>
+            )}
+
             <div className="">
               {theme ? (
                 <Tooltip placement="top" title={"Light"}>
@@ -132,16 +175,19 @@ const Navbar = () => {
 
             {user && user?.role && (
               <div>
-                <Avatar
-                  style={{
-                    backgroundColor: "hsl(233, 100%, 69%)",
-                    verticalAlign: "middle",
-                  }}
-                  size={48}
-                  gap={4}
-                >
-                  {user?.name[0]}
-                </Avatar>
+                <Dropdown menu={{ items }} placement="bottomRight">
+                  <Avatar
+                    style={{
+                      backgroundColor: "hsl(233, 100%, 69%)",
+                      verticalAlign: "middle",
+                      cursor: "pointer",
+                    }}
+                    size={48}
+                    gap={4}
+                  >
+                    {user?.name[0]}
+                  </Avatar>
+                </Dropdown>
               </div>
             )}
           </div>

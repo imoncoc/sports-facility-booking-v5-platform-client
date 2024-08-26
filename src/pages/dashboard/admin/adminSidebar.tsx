@@ -2,7 +2,7 @@ import { Flex, Menu } from "antd";
 import runningIcon from "../../../assets/running.png";
 import { UserOutlined } from "@ant-design/icons";
 
-const adminSidebar = () => {
+const AdminSidebar = () => {
   const itemList = [
     { key: "1", icon: <UserOutlined />, label: "Dashboard" },
     { key: "2", icon: <UserOutlined />, label: "Admin 2" },
@@ -26,4 +26,4 @@ const adminSidebar = () => {
   );
 };
 
-export default adminSidebar;
+export default AdminSidebar;

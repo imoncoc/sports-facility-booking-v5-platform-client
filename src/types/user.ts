@@ -5,3 +5,10 @@ export type TUser = {
   address: string;
   contact: string;
 };
+
+export type TUserData = {
+  userId: string;
+  role: string;
+  iat: number;
+  exp: number;
+};

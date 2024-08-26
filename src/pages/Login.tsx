@@ -24,7 +24,7 @@ const Login = () => {
     dispatch(setUser(res.data.data));
     dispatch(setToken(res.data.token));
     if (res?.data?.success) {
-      navigate("/dashboard");
+      navigate("/");
     }
   };
 

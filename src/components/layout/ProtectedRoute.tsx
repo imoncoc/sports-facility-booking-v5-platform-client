@@ -12,7 +12,6 @@ const ProtectedRoute = ({ children, role }) => {
   const { user } = useAppSelector(selectCurrentUser);
   console.log({ token });
   let userData;
-  const [isAuth, setIsAuth] = useState(true);
   if (token) {
     userData = verifyToken(token);
   }
