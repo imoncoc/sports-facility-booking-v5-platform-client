@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
+import AboutUs from "../pages/about/aboutUs";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             <CustomerTestimonials />
           </>
         ),
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
       },
     ],
   },

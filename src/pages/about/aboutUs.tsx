@@ -1,9 +1,13 @@
-const aboutUs = () => {
+import AboutHero from "./AboutHero";
+import AboutTeamSection from "./AboutTeamSection";
+
+const AboutUs = () => {
   return (
     <div>
-      <h1>Hello, aboutUs!</h1>
+      <AboutHero />
+      <AboutTeamSection />
     </div>
   );
 };
 
-export default aboutUs;
+export default AboutUs;

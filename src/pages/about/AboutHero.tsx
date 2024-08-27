@@ -1,12 +1,12 @@
-const Hero = () => {
+const AboutHero = () => {
   return (
     <div
       className="bg-cover bg-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/free-vector/realistic-soccer-football-stadium-illustration_52683-60376.jpg?t=st=1724558731~exp=1724562331~hmac=d30e67f2d61027f3602699bacb0ebecf49fc4090862583c67e56b55963494300&w=1480')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://plus.unsplash.com/premium_photo-1668383778556-0efac06c34af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
         // height: "calc(100vh - 100px)",
+        height: "85vh",
         backgroundAttachment: "fixed",
-        height: "80vh",
       }}
     >
       <div className="container mx-auto  h-full text-white text-center flex justify-center items-center">
@@ -18,7 +18,7 @@ const Hero = () => {
                 "1px 1px 2px #26BAA4, 0 0 1em #26BAA4, 0 0 0.2em #26BAA4",
             }}
           >
-            Sports Facility Platform
+            About Us
           </h1>
           <p
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
@@ -27,17 +27,18 @@ const Hero = () => {
               textShadow: "1px 1px 2px white, 0 0 1em #6173FF, 0 0 0.2em white",
             }}
           >
-            Book your favorite sports pitch for any game. Play your way, your
-            time, with easy bookings and flexible timings.
+            Our mission is to make sports accessible to everyone by providing a
+            seamless booking platform where players can easily reserve their
+            favorite pitches for football, cricket, or any sport. We believe in
+            the power of sports to bring people together, promote fitness, and
+            create lasting memories.
           </p>
 
-          <div>
-            <button className="custom-secondary-button">Book Now</button>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Hero;
+export default AboutHero;

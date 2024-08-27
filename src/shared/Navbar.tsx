@@ -96,37 +96,55 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-20">
             {/* <!-- Logo --> */}
-            <div className="flex justify-center items-center gap-2">
-              <img className="size-8" src={runningIcon} alt="" />
-              <p className="text-xl font-bold uppercase text-third-color dark:text-fourth-color">
-                {" "}
-                <span className="text-secondary-color">S</span>
-                <span className="text-primary-color">F</span> Platform
-              </p>
-            </div>
+            <NavLink to={"/"}>
+              <div className="flex justify-center items-center gap-2">
+                <img className="size-8" src={runningIcon} alt="" />
+                <p className="text-xl font-bold uppercase text-third-color dark:text-fourth-color">
+                  {" "}
+                  <span className="text-secondary-color">S</span>
+                  <span className="text-primary-color">F</span> Platform
+                </p>
+              </div>
+            </NavLink>
             {/* <!-- Left Menu --> */}
             <div className="hidden text-lg uppercase space-x-8 font-bold lg:flex">
               <NavLink
                 to="/about-us"
-                className="text-grayishViolet hover:text-strongCyan"
+                className={({ isActive }) =>
+                  `text-grayishViolet hover:text-strongCyan ${
+                    isActive ? "text-strongCyan" : ""
+                  }`
+                }
               >
                 About Us
               </NavLink>
               <NavLink
                 to="/contact-us"
-                className="text-grayishViolet hover:text-strongCyan"
+                className={({ isActive }) =>
+                  `text-grayishViolet hover:text-strongCyan ${
+                    isActive ? "text-strongCyan" : ""
+                  }`
+                }
               >
                 Contact us
               </NavLink>
               <NavLink
                 to="/facility-listing"
-                className="text-grayishViolet hover:text-strongCyan"
+                className={({ isActive }) =>
+                  `text-grayishViolet hover:text-strongCyan ${
+                    isActive ? "text-strongCyan" : ""
+                  }`
+                }
               >
                 Facility Listing
               </NavLink>
               <NavLink
                 to="/booking"
-                className="text-grayishViolet hover:text-strongCyan"
+                className={({ isActive }) =>
+                  `text-grayishViolet hover:text-strongCyan ${
+                    isActive ? "text-strongCyan" : ""
+                  }`
+                }
               >
                 Booking
               </NavLink>
