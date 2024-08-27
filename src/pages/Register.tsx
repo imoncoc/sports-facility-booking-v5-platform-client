@@ -1,10 +1,30 @@
 import { Button, Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSignUPMutation } from "../redux/api/auth/authApi";
+import { toast } from "sonner";
 
 const Register = () => {
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [signUP] = useSignUPMutation();
+  const [userRole, setUserRole] = useState("user");
+  const navigate = useNavigate();
+  const onFinish = async (values: any) => {
+    const userInfo = { ...values, role: userRole };
+    console.log("Received values of form: ", userInfo);
+    const res = await signUP(userInfo);
+
+    console.log("res: ", res);
+    if (res?.error) {
+      toast.error(res?.error?.data?.message);
+    } else if (res?.data?.success) {
+      toast.success("User registered successfully");
+      navigate("/login");
+    } else {
+      toast.error("Something went wrong");
+    }
   };
   return (
     <div className="bg-slate-100 flex justify-center items-center h-screen">
@@ -55,9 +75,17 @@ const Register = () => {
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true }]}
+          rules={[
+            { required: true },
+            { min: 8, message: "Password must be at least 8 characters long!" },
+          ]}
         >
-          <Input />
+          <Input.Password
+            visibilityToggle={{
+              visible: passwordVisible,
+              onVisibleChange: setPasswordVisible,
+            }}
+          />
         </Form.Item>
 
         {/* Field */}
@@ -81,7 +109,12 @@ const Register = () => {
             }),
           ]}
         >
-          <Input />
+          <Input.Password
+            visibilityToggle={{
+              visible: confirmPasswordVisible,
+              onVisibleChange: setConfirmPasswordVisible,
+            }}
+          />
         </Form.Item>
 
         <Form.Item>

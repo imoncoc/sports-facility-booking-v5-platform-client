@@ -5,6 +5,7 @@ import { Navigate, NavLink, replace, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { useLoginMutation } from "../redux/api/auth/authApi";
 import { setToken, setUser } from "../redux/features/userSlice";
+import { toast } from "sonner";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -20,6 +21,14 @@ const Login = () => {
 
     console.log({ res });
     console.log(res?.data?.success);
+
+    if (res?.data?.success) {
+      toast.success(res?.data?.message);
+    } else if (res?.error) {
+      toast.error(res?.error?.data?.message);
+    } else {
+      toast.error("Something went wrong, please try again.");
+    }
 
     dispatch(setUser(res.data.data));
     dispatch(setToken(res.data.token));
@@ -44,12 +53,7 @@ const Login = () => {
           name="email"
           rules={[{ required: true, message: "Please input your Email!" }]}
         >
-          <Input
-            defaultValue="web@programming-hero.com"
-            prefix={<UserOutlined />}
-            size="large"
-            placeholder="Email"
-          />
+          <Input prefix={<UserOutlined />} size="large" placeholder="Email" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -59,7 +63,6 @@ const Login = () => {
             prefix={<LockOutlined />}
             type="password"
             size="large"
-            defaultValue="programming-hero"
             placeholder="Password"
             visibilityToggle={{
               visible: passwordVisible,
