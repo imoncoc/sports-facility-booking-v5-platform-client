@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import AboutUs from "../pages/about/aboutUs";
+import ContactUs from "../pages/contact/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "contact-us",
+        element: <ContactUs />,
       },
     ],
   },

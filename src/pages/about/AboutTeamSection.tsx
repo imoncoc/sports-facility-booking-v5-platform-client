@@ -63,8 +63,8 @@ const AboutTeamSection = () => {
         {/* New Section */}
         <div>
           <div className="flex flex-row mx-auto flex-wrap justify-center items-center gap-8">
-            {teamData?.map((item: TTeamData) => (
-              <div className=" w-[270px]">
+            {teamData?.map((item: TTeamData, index: number) => (
+              <div key={index} className=" w-[270px]">
                 <div className="relative overflow-hidden w-[270px] h-[330px] bg-slate-400 rounded-2xl shadow-sm">
                   <img
                     className="absolute top-0 left-0 w-full h-full object-cover object-center"

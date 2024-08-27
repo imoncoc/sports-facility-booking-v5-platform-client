@@ -1,7 +1,11 @@
+import ContactHero from "./ContactHero";
+import ContactMapAndForm from "./ContactMapAndForm";
+
 const ContactUs = () => {
   return (
     <div>
-      <h1>Hello, ContactUs!</h1>
+      <ContactHero />
+      <ContactMapAndForm />
     </div>
   );
 };

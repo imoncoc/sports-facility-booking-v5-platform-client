@@ -33,8 +33,6 @@ const AboutHero = () => {
             the power of sports to bring people together, promote fitness, and
             create lasting memories.
           </p>
-
-          <div></div>
         </div>
       </div>
     </div>

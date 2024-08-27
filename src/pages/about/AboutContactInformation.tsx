@@ -13,19 +13,47 @@ const AboutContactInformation = () => {
           </p>
         </div>
 
-        {/* Icon */}
-        <div className="flex flex-row flex-wrap justify-center mx-auto gap-12 items-center text-veryDarkViolet dark:text-slate-200">
-          <div className="flex gap-4">
-            <HomeOutlined className="text-secondary-color dark:text-strongCyan" />
-            <p>123 Sports Lane, City, State</p>
+        {/* Contact us */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 dark:text-cyanLight">
+          {/* <!-- Phone --> */}
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div className="flex items-center space-x-4">
+              <PhoneOutlined className="text-secondary-color text-2xl dark:text-strongCyan" />
+              <div>
+                <p className="text-lg font-semibold">Phone</p>
+                <p className="text-md text-gray-700 dark:text-gray-300">
+                  +123 456 7890
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <PhoneOutlined className="text-secondary-color dark:text-strongCyan" />
-            <p>+123 456 7890</p>
+
+          {/* <!-- Email --> */}
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div className="flex items-center space-x-4">
+              <MailOutlined className="text-secondary-color text-2xl dark:text-strongCyan" />
+              <div>
+                <p className="text-lg font-semibold">Email</p>
+                <p className="text-md text-gray-700 dark:text-gray-300">
+                  imoncoc0@gmail.com
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <MailOutlined className="text-secondary-color dark:text-strongCyan" />
-            <p>imoncoc0@gmail.com</p>
+
+          {/* <!-- Physical Address --> */}
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div className="flex items-center space-x-4">
+              <HomeOutlined className="text-secondary-color text-2xl dark:text-strongCyan" />
+              <div>
+                <p className="text-lg font-semibold">Address</p>
+                <p className="text-md text-gray-700 dark:text-gray-300">
+                  123 Main Street
+                  <br />
+                  City, Country 12345
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
