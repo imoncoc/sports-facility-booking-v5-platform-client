@@ -1,4 +1,6 @@
+import AboutContactInformation from "./AboutContactInformation";
 import AboutHero from "./AboutHero";
+import AboutHistoryAndMilestones from "./AboutHistoryAndMilestones";
 import AboutTeamSection from "./AboutTeamSection";
 
 const AboutUs = () => {
@@ -6,6 +8,8 @@ const AboutUs = () => {
     <div>
       <AboutHero />
       <AboutTeamSection />
+      <AboutHistoryAndMilestones />
+      <AboutContactInformation />
     </div>
   );
 };
