@@ -1,6 +1,6 @@
 import { HomeOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import type { FormProps } from "antd";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { toast } from "sonner";
 
