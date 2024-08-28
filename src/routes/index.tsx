@@ -13,6 +13,7 @@ import FacilityListing from "../pages/facility/FacilityListing";
 import Booking from "../pages/booking/Booking";
 import FacilityDetails from "../pages/facility/FacilityDetails";
 import AboutUs from "../pages/about/AboutUs";
+import HowItWorks from "../shared/HowItWorks";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
           <>
             <Hero />
             <WhoCanUse />
+            <HowItWorks />
             <CustomerTestimonials />
           </>
         ),

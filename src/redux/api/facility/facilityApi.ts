@@ -31,33 +31,45 @@ type TResponse<T> = {
 
 type TResponseRedux<T> = TResponse<T>;
 
-const authApi = baseApi.injectEndpoints({
+const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
-      query: (args) => {
-        console.log(args);
+      query: ({ page, limit, isDeleted }) => {
         const params = new URLSearchParams();
-
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            params.append(item.name, item.value as string);
-          });
+        params.append("page", String(page));
+        params.append("limit", String(limit));
+        if (isDeleted !== undefined) {
+          params.append("isDeleted", String(isDeleted));
         }
 
         return {
           url: "/facility",
           method: "GET",
-          params: params,
+          params: params.toString(), // Pass query parameters as a string
         };
       },
-      transformResponse: (response: TResponseRedux<any[]>) => {
+      transformResponse: (response: TResponseRedux<any>) => {
         return {
-          data: response?.data,
-          meta: response?.meta,
+          data: response?.data?.result,
+          meta: response?.data?.meta,
+        };
+      },
+    }),
+    getFacilityDetails: builder.query({
+      query: (id) => {
+        // const params = new URLSearchParams();
+        // if (priority) {
+        //   params.append("priority", priority);
+        // }
+        return {
+          url: `/facility/${id}`,
+          method: "GET",
+          //   params: params,
         };
       },
     }),
   }),
 });
 
-export const { useGetAllFacilityQuery } = authApi;
+export const { useGetAllFacilityQuery, useGetFacilityDetailsQuery } =
+  facilityApi;
