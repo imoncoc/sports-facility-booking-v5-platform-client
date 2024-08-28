@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useGetFacilityDetailsQuery } from "../../redux/api/facility/facilityApi";
 import Loading from "../../shared/Loading";
 import stadium from "../../assets/stadium.jpg";
-import { Image } from "antd";
 
 const FacilityDetails = () => {
   const { id } = useParams();
@@ -19,12 +18,12 @@ const FacilityDetails = () => {
   return (
     <div className="dark:bg-slate-600 bg-slate-50">
       <div className="container mx-auto py-12 px-4">
-        <div className="bg-gradient-to-r from-blue-50 to-teal-50 shadow-lg rounded-xl overflow-hidden transition transform  duration-300">
+        <div className="bg-gradient-to-r from-blue-50 to-teal-50   shadow-lg rounded-xl overflow-hidden transition transform  duration-300">
           {/* Facility Image */}
           <div className="relative w-full h-96 md:h-[500px]">
             <img
               className="w-full h-full object-fit bg-cover rounded-t-xl"
-              src={facility.image}
+              src={facility.image ? facility.image : stadium}
               alt={facility.name}
             />
             {/* Overlay Section */}
