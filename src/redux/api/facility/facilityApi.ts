@@ -16,11 +16,6 @@ type TMeta = {
   totalPage: number;
 };
 
-type TQueryParam = {
-  name: string;
-  value: boolean | React.Key;
-};
-
 type TResponse<T> = {
   data?: T;
   error?: TError;
@@ -35,25 +30,25 @@ const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
       query: ({ page, limit, isDeleted, sortBy, searchTerm }) => {
-        console.log({ searchTerm });
-        const params = new URLSearchParams();
-        params.append("page", String(page));
-        params.append("limit", String(limit));
+        const params: Record<string, string> = {
+          page: String(page),
+          limit: String(limit),
+        };
+
         if (isDeleted !== undefined) {
-          params.append("isDeleted", String(isDeleted));
+          params.isDeleted = String(isDeleted);
         }
         if (sortBy) {
-          params.append("sort", String(sortBy));
+          params.sort = sortBy;
         }
         if (searchTerm) {
-          params.append("searchTerm", String(searchTerm));
+          params.searchTerm = searchTerm;
         }
 
-        console.log({ searchTerm });
         return {
           url: "/facility",
           method: "GET",
-          params: params.toString(), // Pass query parameters as a string
+          params, // Pass `params` as an object
         };
       },
       transformResponse: (response: TResponseRedux<any>) => {
@@ -65,14 +60,9 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     getFacilityDetails: builder.query({
       query: (id) => {
-        // const params = new URLSearchParams();
-        // if (priority) {
-        //   params.append("priority", priority);
-        // }
         return {
           url: `/facility/${id}`,
           method: "GET",
-          //   params: params,
         };
       },
     }),

@@ -38,11 +38,11 @@ const HowItWorks = () => {
                 <path
                   d="M1.72656 1.86328C1.72656 100.386 81.5642 180.193 180.125 180.193"
                   stroke="#9F9F9F"
-                  stroke-width="2"
-                  stroke-miterlimit="22.9256"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+                  strokeWidth="2"
+                  strokeMiterlimit="22.9256"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="5 5"
                 ></path>
               </svg>
             </div>
@@ -87,11 +87,11 @@ const HowItWorks = () => {
                 <path
                   d="M180.273 1.42188C180.273 99.9447 100.436 179.752 1.875 179.752"
                   stroke="#9F9F9F"
-                  stroke-width="2"
-                  stroke-miterlimit="22.9256"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+                  strokeWidth="2"
+                  strokeMiterlimit="22.9256"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="5 5"
                 ></path>
               </svg>
             </div>
@@ -110,11 +110,11 @@ const HowItWorks = () => {
                 <path
                   d="M1.72656 1.86328C1.72656 100.386 81.5642 180.193 180.125 180.193"
                   stroke="#9F9F9F"
-                  stroke-width="2"
-                  stroke-miterlimit="22.9256"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="5 5"
+                  strokeWidth="2"
+                  strokeMiterlimit="22.9256"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="5 5"
                 ></path>
               </svg>
             </div>
