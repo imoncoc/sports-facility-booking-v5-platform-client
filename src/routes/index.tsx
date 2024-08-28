@@ -14,6 +14,7 @@ import Booking from "../pages/booking/Booking";
 import FacilityDetails from "../pages/facility/FacilityDetails";
 import AboutUs from "../pages/about/AboutUs";
 import HowItWorks from "../shared/HowItWorks";
+import FeaturedFacilities from "../shared/FeaturedFacilities";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Hero />
+            <FeaturedFacilities />
             <WhoCanUse />
             <HowItWorks />
             <CustomerTestimonials />

@@ -34,14 +34,22 @@ type TResponseRedux<T> = TResponse<T>;
 const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
-      query: ({ page, limit, isDeleted }) => {
+      query: ({ page, limit, isDeleted, sortBy, searchTerm }) => {
+        console.log({ searchTerm });
         const params = new URLSearchParams();
         params.append("page", String(page));
         params.append("limit", String(limit));
         if (isDeleted !== undefined) {
           params.append("isDeleted", String(isDeleted));
         }
+        if (sortBy) {
+          params.append("sort", String(sortBy));
+        }
+        if (searchTerm) {
+          params.append("searchTerm", String(searchTerm));
+        }
 
+        console.log({ searchTerm });
         return {
           url: "/facility",
           method: "GET",
