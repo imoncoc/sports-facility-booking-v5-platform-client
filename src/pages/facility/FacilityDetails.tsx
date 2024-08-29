@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { useParams } from "react-router-dom";
-=======
 import { useNavigate, useParams } from "react-router-dom";
->>>>>>> origin/master
 import { useGetFacilityDetailsQuery } from "../../redux/api/facility/facilityApi";
 import Loading from "../../shared/Loading";
 import stadium from "../../assets/stadium.jpg";
@@ -10,11 +6,6 @@ import stadium from "../../assets/stadium.jpg";
 const FacilityDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetFacilityDetailsQuery(id);
-<<<<<<< HEAD
-
-  const facility = data?.data[0];
-
-=======
   const navigate = useNavigate();
 
   const facility = data?.data[0];
@@ -24,7 +15,6 @@ const FacilityDetails = () => {
     navigate(`/booking/${id}`);
   };
 
->>>>>>> origin/master
   if (isLoading) {
     return <Loading />;
   }
@@ -72,14 +62,10 @@ const FacilityDetails = () => {
 
             {/* Book Now Button */}
             <div className="flex justify-center">
-<<<<<<< HEAD
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-blue-600 hover:to-blue-800 transform transition hover:-translate-y-1 duration-300">
-=======
               <button
                 onClick={() => handleNavigate(facility._id)}
                 className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-blue-600 hover:to-blue-800 transform transition hover:-translate-y-1 duration-300"
               >
->>>>>>> origin/master
                 Book Now
               </button>
             </div>

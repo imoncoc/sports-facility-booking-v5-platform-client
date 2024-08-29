@@ -66,13 +66,6 @@ const facilityApi = baseApi.injectEndpoints({
         };
       },
     }),
-<<<<<<< HEAD
-  }),
-});
-
-export const { useGetAllFacilityQuery, useGetFacilityDetailsQuery } =
-  facilityApi;
-=======
     checkFacilityAvailability: builder.query({
       query: (options) => {
         return {
@@ -89,4 +82,3 @@ export const {
   useGetFacilityDetailsQuery,
   useCheckFacilityAvailabilityQuery,
 } = facilityApi;
->>>>>>> origin/master

@@ -12,8 +12,6 @@ export type TUserData = {
   iat: number;
   exp: number;
 };
-<<<<<<< HEAD
-=======
 
 export type TFacility = {
   _id: string;
@@ -24,4 +22,3 @@ export type TFacility = {
   image: string;
   isDeleted: boolean;
 };
->>>>>>> origin/master
