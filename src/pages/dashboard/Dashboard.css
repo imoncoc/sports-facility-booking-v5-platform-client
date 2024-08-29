@@ -1,0 +1,87 @@
+.header {
+    padding-top: 12px;
+    background: #fff;
+}
+
+/* strongCyan: "hsl(171, 66%, 44%)",
+lightBlue: "hsl(233, 100%, 69%)",
+darkGrayishBlue: "hsl(210, 11%, 33%)",
+grayishBlue: "hsl(201, 11%, 66%)", */
+
+.content {
+    margin: 24px 16px;
+    padding: 20px;
+}
+
+.trigger-btn {
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+.sider {
+    height: 100vh;
+    position: sticky !important;
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.logo {
+    color: hsl(171, 66%, 44%);
+    margin: 40px 0;
+    font-size: 1.5rem;
+}
+
+.menu-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.ant-menu-item-selected {
+    background-color: hsl(233, 100%, 69%) !important;
+    color: #fff !important;
+}
+
+.header-icon {
+    /* background: hsl(201, 11%, 66%); */
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: hsl(233, 100%, 69%);
+    cursor: pointer;
+}
+
+.ant-btn-primary {
+    background-color: hsl(171, 66%, 44%);
+}
+
+.ant-btn-primary:hover {
+    background-color: hsl(171, 44%, 44%) !important;
+    color: #fff !important;
+}
+
+.primary--color {
+    color: #4f6f52 !important;
+}
+
+.primary--light--color {
+    color: #739072 !important;
+}
+
+.secondary--color {
+    color: #86a789 !important;
+}
+
+.light--color {
+    color: #d2e3c8 !important;
+}
+
+.gray--color {
+    color: rgb(182, 181, 181) !important;
+}

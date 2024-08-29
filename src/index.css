@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-primary-color {
+    @apply text-strongCyan;
+}
+
+.text-secondary-color {
+    @apply text-lightBlue;
+}
+
+.text-third-color {
+    @apply text-darkGrayishBlue;
+}
+
+.text-fourth-color {
+    @apply text-grayishBlue;
+}
+
+.custom-primary-button {
+    @apply p-4 px-8 text-center rounded-full shadow-lg cursor-pointer bg-strongCyan duration-200 hover:opacity-80 text-white;
+}
+
+.custom-secondary-button {
+    @apply p-4 px-8 text-center rounded-full shadow-lg cursor-pointer bg-lightBlue duration-200 hover:opacity-80 text-white;
+}
+
+.custom-muted-button {
+    @apply p-4 px-8 text-center rounded-full shadow-lg cursor-pointer hover:bg-lightBlue duration-200 hover:opacity-80 text-darkGrayishBlue dark:text-white hover:text-white;
+}
+
+.custom-logout-button {
+    @apply py-3 px-8 bg-rose-500 text-center text-white rounded-xl shadow-lg cursor-pointer hover:bg-rose-400 duration-200 dark:text-white hover:text-white;
+}
+
+.custom-button {
+    @apply p-4 px-8 text-center bg-white rounded-full shadow-lg duration-200 cursor-pointer hover:opacity-80 text-darkViolet;
+}
+
+.heading-title {
+    @apply text-3xl md:text-4xl text-center font-semibold text-lightBlue dark:text-strongCyan
+}
+
+.heading-p {
+    @apply text-sm md:text-base text-center text-darkGrayishBlue dark:text-grayishBlue my-2
+}
