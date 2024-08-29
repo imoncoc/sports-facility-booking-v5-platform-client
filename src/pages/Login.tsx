@@ -14,26 +14,36 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
+    const toastId = toast.loading("Logging in");
     console.log("Received values of form: ", values);
-    const loginInfo = values;
+    try {
+      const loginInfo = values;
 
-    const res = await login(loginInfo);
+      const res = await login(loginInfo);
 
-    console.log({ res });
-    console.log(res?.data?.success);
+      console.log({ res });
+      console.log(res?.data?.success);
 
-    if (res?.data?.success) {
-      toast.success(res?.data?.message);
-    } else if (res?.error) {
-      toast.error(res?.error?.data?.message);
-    } else {
-      toast.error("Something went wrong, please try again.");
-    }
+      if (res?.data?.success) {
+        toast.success(res?.data?.message);
+      }
+      // else if (res?.error) {
+      //   toast.error(res?.error?.data?.message || "An error occurred.");
+      // } else {
+      //   toast.error("Something went wrong, please try again.");
+      // }
 
-    dispatch(setUser(res.data.data));
-    dispatch(setToken(res.data.token));
-    if (res?.data?.success) {
-      navigate("/");
+      dispatch(setUser(res.data.data));
+      dispatch(setToken(res.data.token));
+      if (res?.data?.success) {
+        navigate("/");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      toast.error("Please input correctly password and email ", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 

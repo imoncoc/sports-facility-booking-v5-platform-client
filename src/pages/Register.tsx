@@ -12,18 +12,20 @@ const Register = () => {
   const [userRole] = useState("user");
   const navigate = useNavigate();
   const onFinish = async (values: any) => {
-    const userInfo = { ...values, role: userRole };
-    console.log("Received values of form: ", userInfo);
-    const res = await signUP(userInfo);
+    const toastId = toast.loading("Logging in");
 
-    console.log("res: ", res);
-    if (res?.error) {
-      toast.error(res?.error?.data?.message);
-    } else if (res?.data?.success) {
+    try {
+      const userInfo = { ...values, role: userRole };
+      console.log("Received values of form: ", userInfo);
+      const res = await signUP(userInfo);
+      console.log(res);
+
       toast.success("User registered successfully");
       navigate("/login");
-    } else {
-      toast.error("Something went wrong");
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      toast.error("Something went wrong", { id: toastId, duration: 2000 });
     }
   };
   return (

@@ -1,9 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-const initialState: any = {
-  token: "",
-  user: {},
+type TUser = {
+  address?: string;
+  email?: string;
+  name?: string;
+  phone?: string;
+  role: string;
+  _id?: string;
+  userId?: string;
+  iat?: number;
+  exp?: number;
+};
+
+type TAuthState = {
+  user: null | TUser;
+  token: null | string;
+};
+
+const initialState: TAuthState = {
+  token: null,
+  user: null,
 };
 const userSlice = createSlice({
   name: "user",

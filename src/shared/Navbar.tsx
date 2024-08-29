@@ -11,6 +11,7 @@ import { Avatar, Dropdown, MenuProps, Select, Tooltip } from "antd";
 import runningIcon from "../../src/assets/running.png";
 import { logout, selectCurrentUser } from "../redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const [menuButton, setMenuButton] = useState(false);
@@ -40,6 +41,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    toast.success("Successfully Logout.");
   };
 
   const options = [
