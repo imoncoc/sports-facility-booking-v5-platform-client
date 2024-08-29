@@ -54,6 +54,13 @@ const router = createBrowserRouter([
         path: "booking",
         element: <Booking />,
       },
+<<<<<<< HEAD
+=======
+      {
+        path: "booking/:id",
+        element: <Booking />,
+      },
+>>>>>>> origin/master
     ],
   },
   {

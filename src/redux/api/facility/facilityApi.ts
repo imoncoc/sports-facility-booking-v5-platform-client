@@ -66,8 +66,27 @@ const facilityApi = baseApi.injectEndpoints({
         };
       },
     }),
+<<<<<<< HEAD
   }),
 });
 
 export const { useGetAllFacilityQuery, useGetFacilityDetailsQuery } =
   facilityApi;
+=======
+    checkFacilityAvailability: builder.query({
+      query: (options) => {
+        return {
+          url: `/check-availability?date=${options?.date}&facility=${options?.id}`,
+          method: "GET",
+        };
+      },
+    }),
+  }),
+});
+
+export const {
+  useGetAllFacilityQuery,
+  useGetFacilityDetailsQuery,
+  useCheckFacilityAvailabilityQuery,
+} = facilityApi;
+>>>>>>> origin/master

@@ -12,3 +12,16 @@ export type TUserData = {
   iat: number;
   exp: number;
 };
+<<<<<<< HEAD
+=======
+
+export type TFacility = {
+  _id: string;
+  name: string;
+  description: string;
+  pricePerHour: number;
+  location: string;
+  image: string;
+  isDeleted: boolean;
+};
+>>>>>>> origin/master
