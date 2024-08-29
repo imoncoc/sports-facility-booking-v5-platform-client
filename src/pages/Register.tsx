@@ -9,7 +9,7 @@ const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [signUP] = useSignUPMutation();
-  const [userRole, setUserRole] = useState("user");
+  const [userRole] = useState("user");
   const navigate = useNavigate();
   const onFinish = async (values: any) => {
     const userInfo = { ...values, role: userRole };

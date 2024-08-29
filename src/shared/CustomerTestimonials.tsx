@@ -1,22 +1,7 @@
-import { Avatar, Carousel, Col, Image, Row } from "antd";
+import { Avatar, Carousel, Image } from "antd";
 import { testimonialData } from "./fakeData";
-import React from "react";
 
 const CustomerTestimonials = () => {
-  const contentStyle: React.CSSProperties = {
-    margin: 0,
-    height: "40px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-    width: "100%",
-  };
-
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
-  };
-
   return (
     <div className="dark:bg-slate-800">
       <div className="container mx-auto py-16 flex flex-col md:flex-row gap-4">

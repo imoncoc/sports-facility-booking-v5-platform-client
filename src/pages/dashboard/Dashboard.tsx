@@ -1,20 +1,17 @@
-import { Button, Flex, Layout } from "antd";
+import { Button, Layout } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { useState } from "react";
-import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import CustomHeader from "./CustomHeader";
-import MainContent from "./MainContent";
-import SideContent from "./SideContent";
 import { useAppSelector } from "../../redux/hooks";
 import { useCurrentToken } from "../../redux/features/userSlice";
 import { verifyToken } from "../../utils/verifyToken";
-import AdminSidebar from "./admin/adminSidebar";
 import UserSideBar from "./user/UserSideBar";
 import AdminMainContent from "./admin/AdminMainContent";
 import UserMainContent from "./user/UserMainContent";
+import AdminSidebar from "./admin/AdminSidebar";
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -24,6 +21,8 @@ const Dashboard = () => {
   if (token) {
     userData = verifyToken(token);
   }
+
+  const userRole = (userData as { role?: string }).role;
 
   console.log({ userData });
 
@@ -36,8 +35,8 @@ const Dashboard = () => {
         collapsed={collapsed}
         className="sider"
       >
-        {userData?.role === "admin" && <AdminSidebar></AdminSidebar>}
-        {userData?.role === "user" && <UserSideBar></UserSideBar>}
+        {userRole === "admin" && <AdminSidebar></AdminSidebar>}
+        {userRole === "user" && <UserSideBar></UserSideBar>}
         <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -54,8 +53,8 @@ const Dashboard = () => {
             <MainContent />
             <SideContent />
           </Flex> */}
-          {userData?.role === "admin" && <AdminMainContent></AdminMainContent>}
-          {userData?.role === "user" && <UserMainContent></UserMainContent>}
+          {userRole === "admin" && <AdminMainContent></AdminMainContent>}
+          {userRole === "user" && <UserMainContent></UserMainContent>}
         </Content>
       </Layout>
     </Layout>

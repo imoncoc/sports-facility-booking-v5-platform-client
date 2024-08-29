@@ -45,7 +45,7 @@ const FacilityListingTable = () => {
   const facilityData: TFacilities[] = facilities?.data || [];
   const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [tableParams, setTableParams] = useState({
+  const [, setTableParams] = useState({
     pagination: {
       current: page,
       pageSize: limit,

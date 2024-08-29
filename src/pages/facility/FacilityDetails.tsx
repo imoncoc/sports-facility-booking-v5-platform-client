@@ -5,11 +5,9 @@ import stadium from "../../assets/stadium.jpg";
 
 const FacilityDetails = () => {
   const { id } = useParams();
-  const { data, isLoading, isError } = useGetFacilityDetailsQuery(id);
-  console.log({ id });
-  console.log({ data });
+  const { data, isLoading } = useGetFacilityDetailsQuery(id);
+
   const facility = data?.data[0];
-  console.log({ facility });
 
   if (isLoading) {
     return <Loading />;

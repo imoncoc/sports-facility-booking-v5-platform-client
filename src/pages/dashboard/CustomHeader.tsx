@@ -4,7 +4,7 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Dropdown, Flex, MenuProps, Typography } from "antd";
+import { Avatar, Dropdown, Flex, MenuProps } from "antd";
 import Search from "antd/es/input/Search";
 import "./Dashboard.css";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";

@@ -1,7 +1,7 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
-import { Navigate, NavLink, replace, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { useLoginMutation } from "../redux/api/auth/authApi";
 import { setToken, setUser } from "../redux/features/userSlice";

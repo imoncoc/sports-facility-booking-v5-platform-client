@@ -7,7 +7,7 @@ import {
   SunOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Dropdown, MenuProps, Select, Tooltip } from "antd";
+import { Avatar, Dropdown, MenuProps, Select, Tooltip } from "antd";
 import runningIcon from "../../src/assets/running.png";
 import { logout, selectCurrentUser } from "../redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
