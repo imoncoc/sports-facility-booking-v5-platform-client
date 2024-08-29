@@ -35,8 +35,8 @@ const Dashboard = () => {
         collapsed={collapsed}
         className="sider"
       >
-        {userRole === "admin" && <AdminSidebar></AdminSidebar>}
-        {userRole === "user" && <UserSideBar></UserSideBar>}
+        {userRole && userRole === "admin" && <AdminSidebar></AdminSidebar>}
+        {userRole && userRole === "user" && <UserSideBar></UserSideBar>}
         <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -53,8 +53,12 @@ const Dashboard = () => {
             <MainContent />
             <SideContent />
           </Flex> */}
-          {userRole === "admin" && <AdminMainContent></AdminMainContent>}
-          {userRole === "user" && <UserMainContent></UserMainContent>}
+          {userRole && userRole === "admin" && (
+            <AdminMainContent></AdminMainContent>
+          )}
+          {userRole && userRole === "user" && (
+            <UserMainContent></UserMainContent>
+          )}
         </Content>
       </Layout>
     </Layout>

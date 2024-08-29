@@ -12,9 +12,10 @@ import ContactUs from "../pages/contact/ContactUs";
 import FacilityListing from "../pages/facility/FacilityListing";
 import Booking from "../pages/booking/Booking";
 import FacilityDetails from "../pages/facility/FacilityDetails";
-import AboutUs from "../pages/about/AboutUs";
+
 import HowItWorks from "../shared/HowItWorks";
 import FeaturedFacilities from "../shared/FeaturedFacilities";
+import AboutUs from "../pages/about/AboutUs";
 
 const router = createBrowserRouter([
   {
