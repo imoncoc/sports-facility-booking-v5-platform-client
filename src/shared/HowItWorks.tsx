@@ -1,3 +1,11 @@
+import { Image } from "antd";
+import first from "../assets/first.jpg";
+import second from "../assets/second.jpg";
+import third from "../assets/third.jpg";
+import fourth from "../assets/fourth.jpg";
+import five from "../assets/five.jpg";
+import six from "../assets/six.jpg";
+
 const HowItWorks = () => {
   return (
     <div className="dark:bg-slate-600 bg-slate-100">
@@ -11,20 +19,21 @@ const HowItWorks = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-y-32 ">
           <div className="flex py-4 lg:px-16">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
-              repellendus cumque atque itaque praesentium, soluta vero libero
-              doloribus odio eveniet!
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              For a clear view of all available options, click on the image to
+              explore and compare facilities. Find the perfect venue for your
+              game with ease.
             </p>
-            <img
+
+            <Image
+              style={{ height: "100px", width: "300px" }}
               className="size-20"
-              src="https://images.unsplash.com/photo-1721332154161-847851ea188b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
+              src={first}
             />
           </div>
 
           <div className="hidden lg:block"></div>
-          <div className="bg-rose-400 relative hidden lg:block">
+          <div className=" relative hidden lg:block">
             <div className=" flex justify-end items-end   absolute -top-32 -right-20 ">
               <svg
                 className="dash-border  "
@@ -49,31 +58,30 @@ const HowItWorks = () => {
           </div>
 
           <div className="flex py-4 lg:px-16">
-            <img
+            <Image
+              style={{ height: "100px", width: "300px" }}
               className="size-20"
-              src="https://images.unsplash.com/photo-1721332154161-847851ea188b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
+              src={second}
             />
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
-              repellendus cumque atque itaque praesentium, soluta vero libero
-              doloribus odio eveniet!
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              Click on the facility of your choice to view details and available
+              booking options. Select the perfect venue for your game.
             </p>
           </div>
           <div className="flex py-4 lg:px-16">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
-              repellendus cumque atque itaque praesentium, soluta vero libero
-              doloribus odio eveniet!
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              Ready to secure your spot? Click 'Book Now' to confirm your
+              reservation and get ready for your game!
             </p>
-            <img
+
+            <Image
+              style={{ height: "100px", width: "300px" }}
               className="size-20"
-              src="https://images.unsplash.com/photo-1721332154161-847851ea188b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
+              src={third}
             />
           </div>
 
-          <div className="bg-rose-400 relative hidden lg:block">
+          <div className=" relative hidden lg:block">
             <div className=" flex justify-end items-end   absolute -top-32 -left-20 ">
               <svg
                 className="dash-border"
@@ -96,7 +104,7 @@ const HowItWorks = () => {
               </svg>
             </div>
           </div>
-          <div className="bg-rose-400 relative hidden lg:block">
+          <div className=" relative hidden lg:block">
             <div className=" flex justify-end items-end   absolute -top-32 -right-20 ">
               <svg
                 className="dash-border  "
@@ -121,15 +129,87 @@ const HowItWorks = () => {
           </div>
 
           <div className="flex py-4 lg:px-16">
-            <img
+            <Image
+              style={{ height: "100px", width: "300px" }}
               className="size-20"
-              src="https://images.unsplash.com/photo-1721332154161-847851ea188b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
+              src={fourth}
             />
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
-              repellendus cumque atque itaque praesentium, soluta vero libero
-              doloribus odio eveniet!
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              Once you've confirmed availability, click 'Proceed to Payment' to
+              complete your booking. Follow the prompts to finalize your
+              reservation and make the payment securely.
+            </p>
+          </div>
+          {/* new */}
+          <div className="flex py-4 lg:px-16">
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              Enter your payment details to finalize the booking. Ensure all
+              information is accurate for a smooth transaction. Once completed,
+            </p>
+
+            <Image
+              style={{ height: "100px", width: "300px" }}
+              className="size-20"
+              src={five}
+            />
+          </div>
+
+          <div className=" relative hidden lg:block">
+            <div className=" flex justify-end items-end   absolute -top-32 -left-20 ">
+              <svg
+                className="dash-border"
+                width="182"
+                height="181"
+                viewBox="0 0 182 181"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ right: "65px" }}
+              >
+                <path
+                  d="M180.273 1.42188C180.273 99.9447 100.436 179.752 1.875 179.752"
+                  stroke="#9F9F9F"
+                  strokeWidth="2"
+                  strokeMiterlimit="22.9256"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="5 5"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div className=" relative hidden lg:block">
+            <div className=" flex justify-end items-end   absolute -top-32 -right-20 ">
+              <svg
+                className="dash-border  "
+                width="182"
+                height="182"
+                viewBox="0 0 182 182"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ left: "65px" }}
+              >
+                <path
+                  d="M1.72656 1.86328C1.72656 100.386 81.5642 180.193 180.125 180.193"
+                  stroke="#9F9F9F"
+                  strokeWidth="2"
+                  strokeMiterlimit="22.9256"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="5 5"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <div className="flex py-4 lg:px-16">
+            <Image
+              style={{ height: "100px", width: "300px" }}
+              className="size-20"
+              src={six}
+            />
+            <p className="p-4 text-darkGrayishBlue dark:text-grayishBlue">
+              Payment successful! Your booking is confirmed. Check your email
+              for details and enjoy your facility!
             </p>
           </div>
         </div>

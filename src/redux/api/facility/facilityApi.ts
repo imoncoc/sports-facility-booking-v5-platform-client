@@ -73,6 +73,18 @@ const facilityApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["availability"],
+    }),
+    addBookings: builder.mutation({
+      query: (data) => {
+        console.log({ data });
+        return {
+          url: "/bookings",
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["availability"],
     }),
   }),
 });
@@ -81,4 +93,5 @@ export const {
   useGetAllFacilityQuery,
   useGetFacilityDetailsQuery,
   useCheckFacilityAvailabilityQuery,
+  useAddBookingsMutation,
 } = facilityApi;

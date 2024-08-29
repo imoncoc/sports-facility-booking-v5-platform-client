@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
-    const toastId = toast.loading("Logging in");
+    const toastId = toast.loading("Logging in", { duration: 2000 });
     console.log("Received values of form: ", values);
     try {
       const loginInfo = values;
@@ -22,10 +22,10 @@ const Login = () => {
       const res = await login(loginInfo);
 
       console.log({ res });
-      console.log(res?.data?.success);
+      console.log(res?.data?.success, { id: toastId });
 
       if (res?.data?.success) {
-        toast.success(res?.data?.message);
+        toast.success(res?.data?.message, { id: toastId });
       }
       // else if (res?.error) {
       //   toast.error(res?.error?.data?.message || "An error occurred.");
@@ -36,7 +36,7 @@ const Login = () => {
       dispatch(setUser(res.data.data));
       dispatch(setToken(res.data.token));
       if (res?.data?.success) {
-        navigate("/");
+        navigate(-1);
       }
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {

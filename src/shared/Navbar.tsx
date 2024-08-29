@@ -140,7 +140,7 @@ const Navbar = () => {
               >
                 Facility Listing
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/booking"
                 className={({ isActive }) =>
                   `text-grayishViolet hover:text-strongCyan ${
@@ -149,7 +149,7 @@ const Navbar = () => {
                 }
               >
                 Booking
-              </NavLink>
+              </NavLink> */}
               {/* <NavLink
                 to="#"
                 className="text-grayishViolet hover:text-strongCyan"
@@ -247,9 +247,9 @@ const Navbar = () => {
             >
               Facility Listing
             </NavLink>
-            <NavLink to="/booking" className="w-full text-center uppercase">
+            {/* <NavLink to="/booking" className="w-full text-center uppercase">
               Booking
-            </NavLink>
+            </NavLink> */}
             <a href="#" className="custom-button w-full">
               Login
             </a>

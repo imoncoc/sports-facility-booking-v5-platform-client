@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
+  useAddBookingsMutation,
   useCheckFacilityAvailabilityQuery,
   useGetFacilityDetailsQuery,
 } from "../../redux/api/facility/facilityApi";
@@ -17,6 +18,8 @@ import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 import { toast } from "sonner";
 import Loading from "../../shared/Loading";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/userSlice";
 
 type TOptions = {
   id?: string;
@@ -29,6 +32,7 @@ type TimeOptions = {
 };
 
 const BookingForm = () => {
+  const { user } = useAppSelector(selectCurrentUser);
   const { id } = useParams();
   const { data, isError } = useGetFacilityDetailsQuery(id);
   const facility: TFacility = data?.data?.[0];
@@ -38,10 +42,12 @@ const BookingForm = () => {
   const [timeOptions, setTimeOptions] = useState<TimeOptions>({});
   const [isCheckAvailability, setIsCheckAvailability] = useState(false);
   const [dates, setDates] = useState<Dayjs | null>(null);
+  const navigate = useNavigate();
   const { data: checkAvailabilityData, isFetching } =
     useCheckFacilityAvailabilityQuery(options, {
       skip: !isCheckAvailability,
     });
+  const [addBookings] = useAddBookingsMutation();
 
   const onChange: DatePickerProps["onChange"] = (date) => {
     if (date) {
@@ -94,13 +100,15 @@ const BookingForm = () => {
 
   console.log({ timeOptions });
 
-  const handleProceed = () => {
+  const handleProceed = async () => {
     const { startTime, endTime } = timeOptions;
-    if (!startTime || !endTime) {
+    if (!user) {
+      toast.warning("Please login First for Booking.");
+      navigate("/login", { replace: true });
+    } else if (!startTime || !endTime) {
       toast.error("Please select both start time and end time.");
       return;
-    }
-    if (startTime && endTime && startTime >= endTime) {
+    } else if (startTime && endTime && startTime >= endTime) {
       toast.warning("Start time must be earlier than end time.");
       return;
     }
@@ -111,7 +119,18 @@ const BookingForm = () => {
       endTime: endTime,
     };
 
-    console.log("handleProceed clicked: ", proceedOptions);
+    const res = await addBookings(proceedOptions);
+
+    if (res?.error) {
+      toast.error(res?.error?.data?.message);
+    }
+
+    if (res?.data?.success) {
+      window.location.href = res?.data?.data?.payment_url;
+    }
+
+    console.log("handleProceed clicked proceedOptions : ", proceedOptions);
+    console.log("handleProceed clicked res: ", res);
   };
 
   if (isFetching) {
@@ -221,7 +240,7 @@ const BookingForm = () => {
                       <TimePicker
                         value={startTimeValue}
                         onChange={onChangeStartTime}
-                        format="HH:00"
+                        format="HH:mm"
                         minuteStep={1}
                         showNow={false}
                       />
@@ -231,7 +250,7 @@ const BookingForm = () => {
                       <TimePicker
                         value={endTimeValue}
                         onChange={onChangeEndTime}
-                        format="HH:00"
+                        format="HH:mm"
                         minuteStep={1}
                         showNow={false}
                       />
