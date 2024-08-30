@@ -16,17 +16,25 @@ const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
   const { token } = useAppSelector(useCurrentToken);
   const { user } = useAppSelector(selectCurrentUser);
 
+  console.log({ role });
+
   let userData;
+  console.log({ role });
+  console.log({ user });
+
   if (token) {
     userData = verifyToken(token);
   }
 
-  if (!userData) {
+  // if (!userData) {
+  //   return <Navigate to="/login" replace />;
+  // }
+  const userRole = (userData as { role?: string }).role;
+  console.log({ userRole });
+  if (role !== undefined && role !== user.role) {
     return <Navigate to="/login" replace />;
   }
-
-  const userRole = (userData as { role?: string }).role;
-  if (role && userRole !== user?.role) {
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 

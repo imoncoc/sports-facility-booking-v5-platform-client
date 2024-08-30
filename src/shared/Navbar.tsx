@@ -71,7 +71,7 @@ const Navbar = () => {
       label: (
         <div
           className="flex justify-between px-4 py-2 gap-4 rounded-lg transition-all duration-300  hover:text-lightBlue"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate(`${user.role}/dashboard`)}
         >
           <UserOutlined />
           <p>My Profile</p>
