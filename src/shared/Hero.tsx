@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="bg-cover bg-center"
@@ -21,7 +24,7 @@ const Hero = () => {
             Sports Facility Platform
           </h1>
           <p
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            className="text-xl px-8 sm:text-2xl md:text-3xl lg:text-4xl"
             style={{
               // textShadow: "2px 2px 4px rgba(255, 255, 255, 0.4)"
               textShadow: "1px 1px 2px white, 0 0 1em #6173FF, 0 0 0.2em white",
@@ -32,7 +35,12 @@ const Hero = () => {
           </p>
 
           <div>
-            <button className="custom-secondary-button">Book Now</button>
+            <button
+              onClick={() => navigate("/facility-listing")}
+              className="custom-secondary-button"
+            >
+              Book Now
+            </button>
           </div>
         </div>
       </div>

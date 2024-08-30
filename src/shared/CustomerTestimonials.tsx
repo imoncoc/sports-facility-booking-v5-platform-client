@@ -4,7 +4,7 @@ import { testimonialData } from "./fakeData";
 const CustomerTestimonials = () => {
   return (
     <div className="dark:bg-slate-800">
-      <div className="container mx-auto py-16 flex flex-col md:flex-row gap-4">
+      <div className="container mx-auto py-16 px-8 flex flex-col md:flex-row gap-4">
         <div className="w-full  md:w-[50%]  flex justify-center items-center p-4 md:p-6">
           <div>
             <div>
@@ -26,7 +26,7 @@ const CustomerTestimonials = () => {
                 </figure>
               ))}
             </div> */}
-            <div className="bg-darkViolet h-full lg:h-[300px] w-[456px] sm:w-[612px] md:w-[400px] lg:w-[520px]  xl:w-[600px] p-8  rounded-md">
+            <div className="bg-darkViolet h-full lg:h-[300px] w-[436px] sm:w-[612px] md:w-[400px] lg:w-[520px]  xl:w-[600px] p-8  rounded-md">
               <Carousel autoplay arrows dotPosition="bottom">
                 {testimonialData?.map((item, indx) => (
                   <figure

@@ -53,7 +53,7 @@ type TWhoCanUse = {
 const WhoCanUse = () => {
   return (
     <div className="dark:bg-slate-600 bg-slate-50">
-      <div className="container mx-auto py-16">
+      <div className="container mx-auto py-16 px-8">
         <div className="mb-16">
           <h3 className="heading-title">Who Can Use This Platform?</h3>
           <p className="heading-p px-20">
