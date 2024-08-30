@@ -12,7 +12,6 @@ import UserSideBar from "./user/UserSideBar";
 import AdminMainContent from "./admin/AdminMainContent";
 import UserMainContent from "./user/UserMainContent";
 import AdminSidebar from "./admin/AdminSidebar";
-// import AdminSidebar from "./admin/AdminSidebar";
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
