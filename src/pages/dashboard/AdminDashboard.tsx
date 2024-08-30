@@ -4,12 +4,13 @@ import { useCurrentToken } from "../../redux/features/userSlice";
 import { verifyToken } from "../../utils/verifyToken";
 import { Button, Layout } from "antd";
 import Sider from "antd/es/layout/Sider";
-import AdminSidebar from "./admin/AdminSidebar";
+// import AdminSidebar from "./admin/AdminSidebar";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Content, Header } from "antd/es/layout/layout";
 import CustomHeader from "./CustomHeader";
 import { Outlet } from "react-router-dom";
 import ProtectedRoute from "../../components/layout/ProtectedRoute";
+import AdminSidebar from "./admin/AdminSidebar";
 
 const AdminDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);

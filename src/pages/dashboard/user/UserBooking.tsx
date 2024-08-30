@@ -70,6 +70,7 @@ const UserBooking = () => {
       }
     } catch (error) {
       // Handle any unexpected errors during the API call
+      console.log(error);
       toast.error("An unexpected error occurred", { duration: 2000 });
     }
   };

@@ -15,6 +15,7 @@ const ContactMapAndForm = () => {
   const [form] = Form.useForm();
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     toast.success("Successfully submitted form");
+    console.log(values);
 
     form.resetFields();
   };
