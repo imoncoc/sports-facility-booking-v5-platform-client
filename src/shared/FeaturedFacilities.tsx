@@ -22,6 +22,7 @@ const FeaturedFacilities = () => {
   } = useGetAllFacilityQuery({
     page: 1,
     limit: 4,
+    isDeleted: false,
   });
 
   if (isLoading || isError) {
@@ -32,7 +33,7 @@ const FeaturedFacilities = () => {
     <div className="dark:bg-neutral-800 bg-neutral-100">
       <div className="container py-16 mx-auto">
         <div className="mb-16">
-          <h3 className="heading-title">Featured Facilities</h3>
+          <h3 className="heading-title">Top Featured Facilities</h3>
           <p className="heading-p px-20">
             Explore our top-rated sports venues with a handpicked selection of
             popular facilities. Each facility is showcased with high-quality

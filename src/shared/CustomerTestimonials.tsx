@@ -26,7 +26,7 @@ const CustomerTestimonials = () => {
                 </figure>
               ))}
             </div> */}
-            <div className="bg-darkViolet h-full lg:h-[300px] w-[436px] sm:w-[612px] md:w-[400px] lg:w-[520px]  xl:w-[600px] p-8  rounded-md">
+            <div className="bg-darkViolet h-full lg:h-[300px] w-[380px] sm:w-[612px] md:w-[400px] lg:w-[520px]  xl:w-[600px] p-8  rounded-md">
               <Carousel autoplay arrows dotPosition="bottom">
                 {testimonialData?.map((item, indx) => (
                   <figure
