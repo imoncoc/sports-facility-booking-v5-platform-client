@@ -191,7 +191,6 @@ const Navbar = () => {
                 </Tooltip>
               )}
             </div>
-
             {user && user?.role && (
               <div>
                 <Dropdown menu={{ items }} placement="bottomRight">
@@ -212,18 +211,39 @@ const Navbar = () => {
           </div>
 
           {/* <!--  Hamburger Menu --> */}
-          <button
-            id="menu-btn"
-            type="button"
-            className={`${
-              !menuButton ? "open" : "block"
-            } hamburger lg:hidden focus:outline-none`}
-            onClick={() => setMenuButton(!menuButton)}
-          >
-            <span className="hamburger-top"></span>
-            <span className="hamburger-middle"></span>
-            <span className="hamburger-bottom"></span>
-          </button>
+          <div className="flex justify-center items-center gap-8">
+            <div className="block lg:hidden">
+              {user && user?.role && (
+                <div>
+                  <Dropdown menu={{ items }} placement="bottomRight">
+                    <Avatar
+                      style={{
+                        backgroundColor: "hsl(233, 100%, 69%)",
+                        verticalAlign: "middle",
+                        cursor: "pointer",
+                      }}
+                      size={48}
+                      gap={4}
+                    >
+                      {user?.name[0]}
+                    </Avatar>
+                  </Dropdown>
+                </div>
+              )}
+            </div>
+            <button
+              id="menu-btn"
+              type="button"
+              className={`${
+                !menuButton ? "open" : "block"
+              } hamburger lg:hidden focus:outline-none`}
+              onClick={() => setMenuButton(!menuButton)}
+            >
+              <span className="hamburger-top"></span>
+              <span className="hamburger-middle"></span>
+              <span className="hamburger-bottom"></span>
+            </button>
+          </div>
         </div>
 
         {/* <!--  Mobile Menu --> */}
