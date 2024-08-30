@@ -14,7 +14,6 @@ type FieldType = {
 const ContactMapAndForm = () => {
   const [form] = Form.useForm();
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    console.log("Success:", values);
     toast.success("Successfully submitted form");
 
     form.resetFields();

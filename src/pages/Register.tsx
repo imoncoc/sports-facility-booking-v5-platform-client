@@ -18,16 +18,15 @@ const Register = () => {
   const onFinish = async (values: any) => {
     // const toastId = toast.loading("Signing in");
 
-    console.log({ user });
     if (user) {
       setUserRole(user.role);
     }
 
     try {
       const userInfo = { ...values, role: userRole };
-      console.log("Received values of form: ", userInfo);
+
       const res = await signUP(userInfo);
-      console.log(res);
+
       if (res.error) {
         toast.error(res?.error?.data?.message);
       } else {

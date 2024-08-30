@@ -69,7 +69,6 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     addNewFacility: builder.mutation({
       query: (data) => {
-        console.log({ data });
         return {
           url: "/facility",
           method: "POST",
@@ -80,7 +79,6 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     updateFacility: builder.mutation({
       query: (options) => {
-        console.log({ options });
         return {
           url: `/facility/${options.id}`,
           method: "PUT",
@@ -100,7 +98,6 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     addBookings: builder.mutation({
       query: (data) => {
-        console.log({ data });
         return {
           url: "/bookings",
           method: "POST",
@@ -129,7 +126,6 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     cancelBooking: builder.mutation({
       query: (data) => {
-        console.log({ data });
         return {
           url: `/bookings/${data}`,
           method: "DELETE",
@@ -140,7 +136,6 @@ const facilityApi = baseApi.injectEndpoints({
     }),
     deleteFacility: builder.mutation({
       query: (data) => {
-        console.log({ data });
         return {
           url: `/facility/${data}`,
           method: "DELETE",

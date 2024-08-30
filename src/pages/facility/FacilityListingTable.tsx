@@ -41,7 +41,7 @@ const FacilityListingTable = () => {
     sortBy,
     searchTerm: debouncedSearchTerm,
   });
-  console.log({ facilities });
+
   const facilityData: TFacilities[] = facilities?.data || [];
   const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -52,8 +52,6 @@ const FacilityListingTable = () => {
       total: total,
     },
   });
-
-  console.log({ facilityData });
 
   // const [searchName, setSearchName] = useState("");
   // const [searchLocation, setSearchLocation] = useState("");
@@ -94,7 +92,7 @@ const FacilityListingTable = () => {
 
   const handleSearch = (value: string) => {
     // setOptions(value ? searchResult(value) : []);
-    console.log("Search Value: ", value);
+
     setSearchTerm(value);
   };
 

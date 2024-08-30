@@ -11,7 +11,6 @@ const FacilityDetails = () => {
   const facility = data?.data[0];
 
   const handleNavigate = (id: string) => {
-    console.log("handleNavigate: ", id);
     navigate(`/booking/${id}`);
   };
 

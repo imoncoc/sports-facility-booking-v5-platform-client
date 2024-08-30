@@ -36,7 +36,6 @@ const Navbar = () => {
     } else {
       setTheme(false);
     }
-    console.log(`selected ${value}`);
   };
 
   const handleLogout = () => {

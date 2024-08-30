@@ -15,7 +15,6 @@ const CustomHeader = () => {
   const { user } = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  console.log({ user });
 
   const handleLogout = () => {
     dispatch(logout());

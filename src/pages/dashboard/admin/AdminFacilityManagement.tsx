@@ -18,7 +18,6 @@ import {
 } from "../../../redux/api/facility/facilityApi";
 import { toast } from "sonner";
 import Loading from "../../../shared/Loading";
-import { duration } from "moment";
 
 interface TFacilityData {
   name: string;
@@ -88,7 +87,6 @@ const AdminFacilityManagement = () => {
   const handleSubmit = async () => {
     if (isUpdateFacility) {
       // Call your update API function
-      console.log(facilityData);
 
       const data = {
         name: facilityData.name,
@@ -99,9 +97,9 @@ const AdminFacilityManagement = () => {
       };
 
       const options = { data, id: facilityData._id };
-      console.log(options);
+
       const res = await updateFacility(options);
-      console.log({ res });
+
       if (res?.data?.success) {
         toast.success(res?.data?.message, { duration: 2000 });
         setIsModalVisible(false);
@@ -111,7 +109,7 @@ const AdminFacilityManagement = () => {
     } else {
       // Call your add API function
       const res = await addNewFacility(facilityData);
-      console.log({ res });
+
       if (res?.data?.success) {
         toast.success(res?.data?.message, { duration: 2000 });
         setIsModalVisible(false);
@@ -120,7 +118,6 @@ const AdminFacilityManagement = () => {
       }
     }
     // setIsModalVisible(false);
-    // console.log(facilityData);
   };
 
   const columns = [
@@ -234,7 +231,7 @@ const AdminFacilityManagement = () => {
       />
       <Modal
         title={isUpdateFacility ? "Update Facility" : "Add Facility"}
-        visible={isModalVisible}
+        open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={[
           <Button key="cancel" onClick={() => setIsModalVisible(false)}>

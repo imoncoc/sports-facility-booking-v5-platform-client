@@ -43,7 +43,6 @@ const UserBooking = () => {
   };
 
   const handleCancelBooking = async (bookingId: string) => {
-    console.log(`Cancel booking with ID: ${bookingId}`);
     // Add your cancel booking logic here
     const res = await cancelBooking(bookingId);
     if (res?.data?.success) {

@@ -15,14 +15,10 @@ const Login = () => {
 
   const onFinish = async (values: any) => {
     const toastId = toast.loading("Logging in", { duration: 2000 });
-    console.log("Received values of form: ", values);
     try {
       const loginInfo = values;
 
       const res = await login(loginInfo);
-
-      console.log({ res });
-      console.log(res?.data?.success, { id: toastId });
 
       if (res?.data?.success) {
         toast.success(res?.data?.message, { id: toastId });

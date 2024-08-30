@@ -22,7 +22,6 @@ const UserDashBoard = () => {
 
   const userRole = (userData as { role?: string }).role;
 
-  console.log({ userData });
   return (
     <ProtectedRoute role={"user"}>
       <Layout>

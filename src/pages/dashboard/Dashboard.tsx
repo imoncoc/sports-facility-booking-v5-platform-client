@@ -24,8 +24,6 @@ const Dashboard = () => {
 
   const userRole = (userData as { role?: string }).role;
 
-  console.log({ userData });
-
   return (
     <Layout>
       <Sider

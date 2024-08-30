@@ -60,8 +60,6 @@ const BookingForm = () => {
     }
   };
 
-  console.log({ isCheckAvailability });
-
   const handleOnChangeDate = () => {
     if (options) {
       setIsCheckAvailability(true);
@@ -98,8 +96,6 @@ const BookingForm = () => {
     }
   };
 
-  console.log({ timeOptions });
-
   const handleProceed = async () => {
     const { startTime, endTime } = timeOptions;
     if (!user) {
@@ -128,9 +124,6 @@ const BookingForm = () => {
     if (res?.data?.success) {
       window.location.href = res?.data?.data?.payment_url;
     }
-
-    console.log("handleProceed clicked proceedOptions : ", proceedOptions);
-    console.log("handleProceed clicked res: ", res);
   };
 
   if (isFetching) {

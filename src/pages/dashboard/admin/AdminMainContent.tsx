@@ -10,7 +10,6 @@ const AdminMainContent = () => {
     year: "numeric",
   });
 
-  console.log({ user });
   return (
     <div className="">
       <div className="bg-white text-white flex flex-col lg:flex-row justify-between py-8 px-16 rounded-md">
