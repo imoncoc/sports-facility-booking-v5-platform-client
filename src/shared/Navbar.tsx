@@ -249,12 +249,12 @@ const Navbar = () => {
             {/* <NavLink to="/booking" className="w-full text-center uppercase">
               Booking
             </NavLink> */}
-            <a href="#" className="custom-button w-full">
+            <NavLink to={"/login"} className="custom-button w-full">
               Login
-            </a>
-            <a href="#" className="custom-primary-button w-full">
+            </NavLink>
+            <NavLink to={"/register"} className="custom-primary-button w-full">
               Sign Up
-            </a>
+            </NavLink>
 
             <Select
               className="w-full"
