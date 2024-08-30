@@ -6,6 +6,7 @@ import { useSignUPMutation } from "../redux/api/auth/authApi";
 import { toast } from "sonner";
 import { logout, selectCurrentUser } from "../redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -28,7 +29,17 @@ const Register = () => {
       const res = await signUP(userInfo);
 
       if (res.error) {
-        toast.error(res?.error?.data?.message);
+        // Check if the error has a 'data' property and it's of type FetchBaseQueryError
+        if ("data" in res.error) {
+          const baseQueryError = res.error as FetchBaseQueryError;
+          const errorMessage =
+            (baseQueryError.data as { message?: string }).message ||
+            "Something went wrong";
+          toast.error(errorMessage);
+        } else {
+          // Handle SerializedError or other types of errors
+          toast.error("An unexpected error occurred");
+        }
       } else {
         toast.success("User registered successfully");
         dispatch(logout());

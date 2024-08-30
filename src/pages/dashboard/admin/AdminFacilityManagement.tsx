@@ -18,6 +18,7 @@ import {
 } from "../../../redux/api/facility/facilityApi";
 import { toast } from "sonner";
 import Loading from "../../../shared/Loading";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 interface TFacilityData {
   name: string;
@@ -58,11 +59,32 @@ const AdminFacilityManagement = () => {
   }, [data]);
 
   const handleCancelFacility = async (facilityId: string) => {
-    const res = await deleteFacility(facilityId);
-    if (res?.data?.success) {
-      toast.success(res?.data?.message);
-    } else if (res?.error) {
-      toast.error(res?.error?.data?.message);
+    try {
+      const res = await deleteFacility(facilityId);
+
+      // Check if there is a success response
+      if (res?.data?.success) {
+        toast.success(res.data.message || "Facility deleted successfully");
+      }
+
+      // Check if there is an error response
+      else if (res?.error) {
+        // Check if the error has a 'data' property and handle it accordingly
+        if ("data" in res.error) {
+          const baseQueryError = res.error as FetchBaseQueryError;
+          const errorMessage =
+            (baseQueryError.data as { message?: string }).message ||
+            "An unexpected error occurred";
+          toast.error(errorMessage);
+        } else {
+          // Handle other types of errors
+          toast.error("An unexpected error occurred");
+        }
+      }
+    } catch (error) {
+      // Handle any unexpected errors during the deletion process
+      console.log(error);
+      toast.error("An unexpected error occurred: ");
     }
   };
 
@@ -85,39 +107,54 @@ const AdminFacilityManagement = () => {
   };
 
   const handleSubmit = async () => {
-    if (isUpdateFacility) {
-      // Call your update API function
+    try {
+      let res;
 
-      const data = {
-        name: facilityData.name,
-        description: facilityData.description,
-        pricePerHour: facilityData.pricePerHour,
-        location: facilityData.location,
-        image: facilityData.image,
-      };
+      if (isUpdateFacility) {
+        // Prepare data for update
+        const data = {
+          name: facilityData.name,
+          description: facilityData.description,
+          pricePerHour: facilityData.pricePerHour,
+          location: facilityData.location,
+          image: facilityData.image,
+        };
 
-      const options = { data, id: facilityData._id };
+        const options = { data, id: facilityData._id };
 
-      const res = await updateFacility(options);
-
-      if (res?.data?.success) {
-        toast.success(res?.data?.message, { duration: 2000 });
-        setIsModalVisible(false);
-      } else if (res?.error) {
-        toast.error(res?.error?.data?.message, { duration: 2000 });
+        // Call the update API function
+        res = await updateFacility(options);
+      } else {
+        // Call the add API function
+        res = await addNewFacility(facilityData);
       }
-    } else {
-      // Call your add API function
-      const res = await addNewFacility(facilityData);
 
+      // Handle success response
       if (res?.data?.success) {
-        toast.success(res?.data?.message, { duration: 2000 });
+        toast.success(res.data.message || "Operation successful", {
+          duration: 2000,
+        });
         setIsModalVisible(false);
-      } else if (res?.error) {
-        toast.error(res?.error?.data?.message, { duration: 2000 });
       }
+      // Handle error response
+      else if (res?.error) {
+        // Check if the error has a 'data' property and handle it accordingly
+        if ("data" in res.error) {
+          const baseQueryError = res.error as FetchBaseQueryError;
+          const errorMessage =
+            (baseQueryError.data as { message?: string }).message ||
+            "An unexpected error occurred";
+          toast.error(errorMessage, { duration: 2000 });
+        } else {
+          // Handle other types of errors
+          toast.error("An unexpected error occurred", { duration: 2000 });
+        }
+      }
+    } catch (error) {
+      // Handle any unexpected errors during the API call
+      console.log(error);
+      toast.error("An unexpected error occurred", { duration: 2000 });
     }
-    // setIsModalVisible(false);
   };
 
   const columns = [

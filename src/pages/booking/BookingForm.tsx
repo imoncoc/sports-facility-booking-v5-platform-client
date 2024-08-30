@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import Loading from "../../shared/Loading";
 import { useAppSelector } from "../../redux/hooks";
 import { selectCurrentUser } from "../../redux/features/userSlice";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 type TOptions = {
   id?: string;
@@ -118,11 +119,19 @@ const BookingForm = () => {
     const res = await addBookings(proceedOptions);
 
     if (res?.error) {
-      toast.error(res?.error?.data?.message);
-    }
-
-    if (res?.data?.success) {
-      window.location.href = res?.data?.data?.payment_url;
+      // Check if the error has a 'data' property and it's of type FetchBaseQueryError
+      if ("data" in res.error) {
+        const baseQueryError = res.error as FetchBaseQueryError;
+        const errorMessage =
+          (baseQueryError.data as { message?: string }).message ||
+          "An unexpected error occurred";
+        toast.error(errorMessage);
+      } else {
+        // Handle SerializedError or other types of errors
+        toast.error("An unexpected error occurred");
+      }
+    } else if (res?.data?.success && res?.data?.data?.payment_url) {
+      window.location.href = res.data.data.payment_url;
     }
   };
 

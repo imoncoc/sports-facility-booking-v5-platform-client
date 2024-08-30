@@ -15,6 +15,7 @@ import {
 } from "../../../redux/api/facility/facilityApi";
 import Loading from "../../../shared/Loading";
 import { toast } from "sonner";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const { Title, Text } = Typography;
 
@@ -43,12 +44,33 @@ const UserBooking = () => {
   };
 
   const handleCancelBooking = async (bookingId: string) => {
-    // Add your cancel booking logic here
-    const res = await cancelBooking(bookingId);
-    if (res?.data?.success) {
-      toast.success(res?.data?.message);
-    } else if (res?.error) {
-      toast.error(res?.error?.data?.message);
+    try {
+      // Call your cancel booking function
+      const res = await cancelBooking(bookingId);
+
+      // Handle success response
+      if (res?.data?.success) {
+        toast.success(res.data.message || "Booking canceled successfully", {
+          duration: 2000,
+        });
+      }
+      // Handle error response
+      else if (res?.error) {
+        // Check if the error has a 'data' property and handle it accordingly
+        if ("data" in res.error) {
+          const baseQueryError = res.error as FetchBaseQueryError;
+          const errorMessage =
+            (baseQueryError.data as { message?: string }).message ||
+            "An unexpected error occurred";
+          toast.error(errorMessage, { duration: 2000 });
+        } else {
+          // Handle other types of errors
+          toast.error("An unexpected error occurred", { duration: 2000 });
+        }
+      }
+    } catch (error) {
+      // Handle any unexpected errors during the API call
+      toast.error("An unexpected error occurred", { duration: 2000 });
     }
   };
 
