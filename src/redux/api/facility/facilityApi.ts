@@ -51,6 +51,7 @@ const facilityApi = baseApi.injectEndpoints({
           params, // Pass `params` as an object
         };
       },
+      providesTags: ["facility"],
       transformResponse: (response: TResponseRedux<any>) => {
         return {
           data: response?.data?.result,
@@ -65,6 +66,28 @@ const facilityApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+    }),
+    addNewFacility: builder.mutation({
+      query: (data) => {
+        console.log({ data });
+        return {
+          url: "/facility",
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["facility"],
+    }),
+    updateFacility: builder.mutation({
+      query: (options) => {
+        console.log({ options });
+        return {
+          url: `/facility/${options.id}`,
+          method: "PUT",
+          body: options.data,
+        };
+      },
+      invalidatesTags: ["facility"],
     }),
     checkFacilityAvailability: builder.query({
       query: (options) => {
@@ -95,6 +118,15 @@ const facilityApi = baseApi.injectEndpoints({
       },
       providesTags: ["userBooking"],
     }),
+    getAllBookings: builder.query({
+      query: () => {
+        return {
+          url: `/bookings`,
+          method: "GET",
+        };
+      },
+      providesTags: ["userBooking"],
+    }),
     cancelBooking: builder.mutation({
       query: (data) => {
         console.log({ data });
@@ -106,6 +138,17 @@ const facilityApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["userBooking"],
     }),
+    deleteFacility: builder.mutation({
+      query: (data) => {
+        console.log({ data });
+        return {
+          url: `/facility/${data}`,
+          method: "DELETE",
+          // body: data,
+        };
+      },
+      invalidatesTags: ["facility"],
+    }),
   }),
 });
 
@@ -116,4 +159,8 @@ export const {
   useAddBookingsMutation,
   useGetAllUserBookingQuery,
   useCancelBookingMutation,
+  useGetAllBookingsQuery,
+  useDeleteFacilityMutation,
+  useAddNewFacilityMutation,
+  useUpdateFacilityMutation,
 } = facilityApi;

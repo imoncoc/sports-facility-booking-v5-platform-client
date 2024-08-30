@@ -2,9 +2,11 @@ import { Flex, Menu } from "antd";
 import runningIcon from "../../../assets/running.png";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+  const [selectedKey, setSelectedKey] = useState("");
   const itemList = [
     {
       key: "1",
@@ -15,16 +17,27 @@ const AdminSidebar = () => {
     {
       key: "2",
       icon: <UserOutlined />,
+      label: "Facility Management",
+      route: "/admin/dashboard/facility-management",
+    },
+    {
+      key: "3",
+      icon: <UserOutlined />,
       label: "Bookings",
       route: "/admin/dashboard/booking",
     },
-    { key: "3", icon: <UserOutlined />, label: "Admin 3" },
+    {
+      key: "4",
+      icon: <UserOutlined />,
+      label: "Create Admin",
+      route: "/admin/dashboard/create-account",
+    },
   ];
 
   const onClick = (e: any) => {
     const selectedItem = itemList.find((item) => item.key === e.key);
     if (selectedItem && selectedItem.route) {
-      // Ensure navigate is called with a valid string
+      setSelectedKey(e.key); // Update the selected key state
       navigate(selectedItem.route);
     }
   };
@@ -44,7 +57,7 @@ const AdminSidebar = () => {
           icon: item.icon,
           label: item.label,
         }))}
-        defaultSelectedKeys={["1"]}
+        selectedKeys={[selectedKey]}
         className="menu-bar"
       />
     </>

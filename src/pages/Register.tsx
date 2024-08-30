@@ -4,28 +4,41 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSignUPMutation } from "../redux/api/auth/authApi";
 import { toast } from "sonner";
+import { logout, selectCurrentUser } from "../redux/features/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [signUP] = useSignUPMutation();
-  const [userRole] = useState("user");
+  const { user } = useAppSelector(selectCurrentUser);
+  const [userRole, setUserRole] = useState("user");
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const onFinish = async (values: any) => {
-    const toastId = toast.loading("Logging in");
+    // const toastId = toast.loading("Signing in");
+
+    console.log({ user });
+    if (user) {
+      setUserRole(user.role);
+    }
 
     try {
       const userInfo = { ...values, role: userRole };
       console.log("Received values of form: ", userInfo);
       const res = await signUP(userInfo);
       console.log(res);
-
-      toast.success("User registered successfully");
-      navigate("/login");
+      if (res.error) {
+        toast.error(res?.error?.data?.message);
+      } else {
+        toast.success("User registered successfully");
+        dispatch(logout());
+        navigate("/login");
+      }
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      toast.error("Something went wrong", { id: toastId, duration: 2000 });
+      toast.error("Something went wrong", { duration: 2000 });
     }
   };
   return (
@@ -121,7 +134,7 @@ const Register = () => {
 
         <Form.Item>
           <Button block type="primary" size="large" htmlType="submit">
-            Log in
+            Sign Up
           </Button>
           Already a account? <NavLink to="/login">Login Now!</NavLink>
         </Form.Item>

@@ -21,6 +21,7 @@ import UserBooking from "../pages/dashboard/user/UserBooking";
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
 import AdminMainContent from "../pages/dashboard/admin/AdminMainContent";
 import AdminBooking from "../pages/dashboard/admin/AdminBooking";
+import AdminFacilityManagement from "../pages/dashboard/admin/AdminFacilityManagement";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,14 @@ const router = createBrowserRouter([
       {
         path: "booking",
         element: <AdminBooking />,
+      },
+      {
+        path: "create-account",
+        element: <Register />,
+      },
+      {
+        path: "facility-management",
+        element: <AdminFacilityManagement />,
       },
     ],
   },

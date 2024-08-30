@@ -6,6 +6,7 @@ import {
   Modal,
   Typography,
   Divider,
+  Tag,
 } from "antd";
 import { useState, useEffect } from "react";
 import {
@@ -60,6 +61,19 @@ const UserBooking = () => {
   const handleCloseModal = () => {
     setModalVisible(false);
     setSelectedBooking(null);
+  };
+
+  const getPaymentStatusTag = (status: string) => {
+    switch (status) {
+      case "paid":
+        return <Tag color="success">Paid</Tag>;
+      case "pending":
+        return <Tag color="warning">Pending</Tag>;
+      case "failed":
+        return <Tag color="error">Failed</Tag>;
+      default:
+        return <Tag color="default">Unknown</Tag>;
+    }
   };
 
   const columns = [
@@ -119,6 +133,7 @@ const UserBooking = () => {
       title: "Payment Status",
       dataIndex: "paymentStatus",
       key: "paymentStatus",
+      render: (paymentStatus: string) => getPaymentStatusTag(paymentStatus),
     },
     {
       title: "Transaction ID",
@@ -172,7 +187,7 @@ const UserBooking = () => {
       />
       <Modal
         title="Booking Details"
-        visible={modalVisible}
+        open={modalVisible}
         onCancel={handleCloseModal}
         footer={null}
         style={{ top: 20, padding: "20px" }}
