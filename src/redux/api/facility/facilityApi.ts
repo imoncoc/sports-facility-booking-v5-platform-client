@@ -86,6 +86,26 @@ const facilityApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["availability"],
     }),
+    getAllUserBooking: builder.query({
+      query: () => {
+        return {
+          url: `/bookings/user`,
+          method: "GET",
+        };
+      },
+      providesTags: ["userBooking"],
+    }),
+    cancelBooking: builder.mutation({
+      query: (data) => {
+        console.log({ data });
+        return {
+          url: `/bookings/${data}`,
+          method: "DELETE",
+          // body: data,
+        };
+      },
+      invalidatesTags: ["userBooking"],
+    }),
   }),
 });
 
@@ -94,4 +114,6 @@ export const {
   useGetFacilityDetailsQuery,
   useCheckFacilityAvailabilityQuery,
   useAddBookingsMutation,
+  useGetAllUserBookingQuery,
+  useCancelBookingMutation,
 } = facilityApi;

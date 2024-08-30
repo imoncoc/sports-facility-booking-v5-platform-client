@@ -16,11 +16,7 @@ const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
   const { token } = useAppSelector(useCurrentToken);
   const { user } = useAppSelector(selectCurrentUser);
 
-  console.log({ role });
-
   let userData;
-  console.log({ role });
-  console.log({ user });
 
   if (token) {
     userData = verifyToken(token);
@@ -29,8 +25,9 @@ const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
   // if (!userData) {
   //   return <Navigate to="/login" replace />;
   // }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const userRole = (userData as { role?: string }).role;
-  console.log({ userRole });
+
   if (role !== undefined && role !== user.role) {
     return <Navigate to="/login" replace />;
   }

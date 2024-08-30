@@ -18,7 +18,6 @@ const UserSideBar = () => {
       label: "My Bookings",
       route: "/user/dashboard/my-booking",
     },
-    { key: "3", icon: <UserOutlined />, label: "User 3" },
   ];
 
   // const onClick = (e: any) => {
