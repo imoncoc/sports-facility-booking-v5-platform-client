@@ -111,6 +111,11 @@ const AdminBooking = () => {
       render: (paymentStatus: string) => getPaymentStatusTag(paymentStatus),
     },
     {
+      title: "User ID",
+      dataIndex: "user",
+      key: "user",
+    },
+    {
       title: "Transaction ID",
       dataIndex: "transactionId",
       key: "transactionId",

@@ -23,7 +23,7 @@ const AdminSidebar = () => {
     {
       key: "3",
       icon: <UserOutlined />,
-      label: "Bookings",
+      label: "All Bookings",
       route: "/admin/dashboard/booking",
     },
     {

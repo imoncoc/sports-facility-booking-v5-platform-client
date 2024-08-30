@@ -211,8 +211,8 @@ const Navbar = () => {
           </div>
 
           {/* <!--  Hamburger Menu --> */}
-          <div className="flex justify-center items-center gap-8">
-            <div className="block lg:hidden">
+          <div className=" lg:hidden flex justify-center  items-center gap-8">
+            <div className="">
               {user && user?.role && (
                 <div>
                   <Dropdown menu={{ items }} placement="bottomRight">
